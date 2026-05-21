@@ -1,0 +1,859 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title> São Carlos </title>
+  <meta name="description" content="M9 Automóveis em São Carlos - SP. Veículos selecionados, procedência garantida e atendimento premium.">
+
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            gold: '#C8A96B',
+            dark: '#0B0B0B',
+            soft: '#151515'
+          },
+          boxShadow: {
+            premium: '0 10px 40px rgba(200,169,107,0.15)'
+          }
+        }
+      }
+    }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    * {
+      font-family: 'Inter', sans-serif;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background: #0B0B0B;
+      color: white;
+      overflow-x: hidden;
+    }
+
+    .gold-gradient {
+      background: linear-gradient(135deg, #C8A96B, #F3D7A0);
+    }
+
+    .hero-overlay {
+      background: linear-gradient(to right, rgba(0,0,0,0.88), rgba(0,0,0,0.55));
+    }
+
+    .card-hover {
+      transition: all .35s ease;
+    }
+
+    .card-hover:hover {
+      transform: translateY(-10px) scale(1.01);
+      border-color: #C8A96B;
+      box-shadow:
+        0 10px 40px rgba(200,169,107,0.18),
+        0 0 25px rgba(200,169,107,0.12);
+    }
+
+    .card-hover img {
+      transition: transform .8s ease;
+    }
+
+    .card-hover:hover img {
+      transform: scale(1.08);
+    }
+
+    .card-hover::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        135deg,
+        rgba(200,169,107,0.10),
+        transparent 40%
+      );
+      opacity: 0;
+      transition: opacity .5s ease;
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    .card-hover:hover::before {
+      opacity: 1;
+    }
+
+    .fade-up {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: all .8s ease;
+    }
+
+    .fade-up.active {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .glass {
+      background: rgba(255,255,255,0.04);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(255,255,255,0.08);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header class="fixed top-0 left-0 w-full z-50 bg-black/80 backdrop-blur-lg border-b border-white/5">
+    <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+
+      <div>
+        <h1 class="text-2xl font-extrabold tracking-wide">
+          <span class="text-gold">M9</span> Automóveis
+        </h1>
+      </div>
+
+      <nav class="hidden md:flex items-center gap-8 text-sm font-medium text-white/80">
+        <a href="#estoque" class="hover:text-gold transition">Estoque</a>
+        <a href="#sobre" class="hover:text-gold transition">Sobre</a>
+        <a href="#depoimentos" class="hover:text-gold transition">Depoimentos</a>
+        <a href="#contato" class="hover:text-gold transition">Contato</a>
+      </nav>
+
+      <a href="https://wa.me/5516997539327"
+         target="_blank"
+         class="hidden md:flex gold-gradient text-black px-5 py-3 rounded-full font-semibold hover:scale-105 transition duration-300">
+        WhatsApp
+      </a>
+
+      <button id="menuBtn" class="md:hidden text-white">
+        <svg xmlns="http://www.w3.org/2000/svg" class="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+        </svg>
+      </button>
+    </div>
+
+    <!-- MOBILE MENU -->
+    <div id="mobileMenu" class="hidden md:hidden bg-black border-t border-white/10 px-6 py-6 space-y-5">
+      <a href="#estoque" class="block text-white/80">Estoque</a>
+      <a href="#sobre" class="block text-white/80">Sobre</a>
+      <a href="#depoimentos" class="block text-white/80">Depoimentos</a>
+      <a href="#contato" class="block text-white/80">Contato</a>
+
+      <a href="https://wa.me/5516997539327"
+         target="_blank"
+         class="inline-flex gold-gradient text-black px-5 py-3 rounded-full font-semibold">
+        WhatsApp
+      </a>
+    </div>
+  </header>
+
+
+  <!-- HERO -->
+  <section class="relative min-h-screen flex items-center overflow-hidden">
+
+    <img
+      src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?q=80&w=1600&auto=format&fit=crop"
+      alt="Carro premium"
+      class="absolute inset-0 w-full h-full object-cover"
+    />
+
+    <div class="absolute inset-0 hero-overlay"></div>
+
+    <div class="relative z-10 max-w-7xl mx-auto px-6 pt-32 w-full">
+      <div class="max-w-3xl fade-up">
+
+        <span class="inline-flex items-center border border-gold/40 bg-gold/10 text-gold px-4 py-2 rounded-full text-sm font-medium mb-6">
+          Premium Cars • São Carlos - SP
+        </span>
+
+        <h2 class="text-5xl md:text-7xl leading-tight font-black mb-6">
+          Bem-vindo à sua <span class="text-gold">próxima conquista.</span>
+        </h2>
+
+        <p class="text-white/75 text-lg md:text-xl leading-relaxed mb-10 max-w-2xl">
+          Na M9 Automóveis, você encontra veículos selecionados, procedência garantida e condições facilitadas para conquistar seu próximo carro com segurança e confiança.
+        </p>
+
+        <div class="flex flex-col sm:flex-row gap-4">
+          <a href="#estoque"
+             class="gold-gradient text-black px-8 py-4 rounded-full font-bold text-center hover:scale-105 transition duration-300 shadow-premium">
+            Ver Estoque
+          </a>
+
+          <a href="https://wa.me/5516997539327"
+             target="_blank"
+             class="border border-white/20 px-8 py-4 rounded-full font-semibold text-center hover:border-gold hover:text-gold transition duration-300">
+            Falar no WhatsApp
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- DIFERENCIAIS -->
+  <section class="py-24 bg-[#101010]">
+    <div class="max-w-7xl mx-auto px-6">
+
+      <div class="text-center mb-16 fade-up">
+        <span class="text-gold font-semibold tracking-widest uppercase text-sm">
+          Diferenciais
+        </span>
+
+        <h3 class="text-4xl md:text-5xl font-black mt-4">
+          Experiência premium do início ao fim.
+        </h3>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6">
+
+        <div class="glass rounded-3xl p-8 text-center card-hover fade-up">
+          <div class="text-gold text-4xl mb-5">✔</div>
+          <h4 class="font-bold text-lg mb-2">Procedência garantida</h4>
+          <p class="text-white/60 text-sm">Veículos rigorosamente selecionados.</p>
+        </div>
+
+        <div class="glass rounded-3xl p-8 text-center card-hover fade-up">
+          <div class="text-gold text-4xl mb-5">⚡</div>
+          <h4 class="font-bold text-lg mb-2">Atendimento rápido</h4>
+          <p class="text-white/60 text-sm">Equipe preparada para atender você.</p>
+        </div>
+
+        <div class="glass rounded-3xl p-8 text-center card-hover fade-up">
+          <div class="text-gold text-4xl mb-5">💳</div>
+          <h4 class="font-bold text-lg mb-2">Financiamento facilitado</h4>
+          <p class="text-white/60 text-sm">Condições acessíveis e aprovação rápida.</p>
+        </div>
+
+        <div class="glass rounded-3xl p-8 text-center card-hover fade-up">
+          <div class="text-gold text-4xl mb-5">🚘</div>
+          <h4 class="font-bold text-lg mb-2">Avaliação justa no usado</h4>
+          <p class="text-white/60 text-sm">Seu veículo valorizado na negociação.</p>
+        </div>
+
+        <div class="glass rounded-3xl p-8 text-center card-hover fade-up">
+          <div class="text-gold text-4xl mb-5">🏆</div>
+          <h4 class="font-bold text-lg mb-2">+10 anos de mercado</h4>
+          <p class="text-white/60 text-sm">Tradição, confiança e credibilidade.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ESTOQUE -->
+  <section id="estoque" class="py-24 bg-black">
+    <div class="max-w-7xl mx-auto px-6">
+
+      <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-16 fade-up">
+        <div>
+          <span class="text-gold font-semibold tracking-widest uppercase text-sm">
+            Estoque Premium
+          </span>
+
+          <h3 class="text-4xl md:text-5xl font-black mt-4">
+            Veículos selecionados.
+          </h3>
+        </div>
+
+        <p class="text-white/60 max-w-xl">
+          Conheça alguns dos veículos disponíveis na M9 Automóveis. Qualidade, procedência e sofisticação em cada detalhe.
+        </p>
+      </div>
+
+
+      <!-- LISTA DE VEÍCULOS -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+
+        <!-- FORD KA -->
+        <div class="bg-[#111111] border border-white/5 rounded-3xl overflow-hidden card-hover fade-up">
+          <div class="overflow-hidden">
+            <img 
+      src="assets/img/ford-ka-1.jpeg" 
+      alt="Ford Ka"
+      class="w-full h-64 object-cover hover:scale-110 transition duration-700" 
+    />
+          </div>
+          <div class="p-7">
+            <h4 class="text-2xl font-bold mb-4">Ford Ka Básico</h4>
+            <div class="grid grid-cols-2 gap-4 text-sm text-white/70 mb-7">
+              <div><span class="block text-white/40">Ano</span>2012</div>
+              <div><span class="block text-white/40">KM</span>142.000</div>
+              <div><span class="block text-white/40">Combustível</span>Flex</div>
+              <div><span class="block text-white/40">Categoria</span>Hatch</div>
+            </div>
+            <a href="https://wa.me/5516997539327?text=Olá,%20tenho%20interesse%20no%20Ford%20Ka%20Básico" target="_blank" class="block text-center gold-gradient text-black py-4 rounded-2xl font-bold">Tenho Interesse</a>
+          </div>
+        </div>
+
+        <!-- NISSAN KICKS -->
+<div class="bg-[#111111] border border-white/5 rounded-3xl overflow-hidden card-hover fade-up">
+  
+  <div class="overflow-hidden">
+    <img 
+      src="assets/img/kicks-1.jpeg" 
+      alt="Nissan Kicks"
+      class="w-full h-64 object-cover hover:scale-110 transition duration-700" 
+    />
+  </div>
+
+  <div class="p-7">
+    
+    <h4 class="text-2xl font-bold mb-4">
+      Nissan Kicks Advance 1.0 Turbo
+    </h4>
+
+    <div class="grid grid-cols-2 gap-4 text-sm text-white/70 mb-7">
+      
+      <div>
+        <span class="block text-white/40">Ano</span>
+        2026
+      </div>
+
+      <div>
+        <span class="block text-white/40">KM</span>
+        6.930
+      </div>
+
+      <div>
+        <span class="block text-white/40">Combustível</span>
+        Flex
+      </div>
+
+      <div>
+        <span class="block text-white/40">Motor</span>
+        1.0 Turbo
+      </div>
+
+    </div>
+
+    <a 
+      href="https://wa.me/5516997539327?text=Olá,%20tenho%20interesse%20no%20Nissan%20Kicks%20Advance%201.0%20Turbo" 
+      target="_blank" 
+      class="block text-center gold-gradient text-black py-4 rounded-2xl font-bold"
+    >
+      Tenho Interesse
+    </a>
+
+  </div>
+</div>
+
+        <!-- GWM HAVAL -->
+        <div class="bg-[#111111] border border-white/5 rounded-3xl overflow-hidden card-hover fade-up">
+          <div class="overflow-hidden">
+             <img 
+      src="assets/img/haval-1.jpeg" 
+      alt="GWM Haval H6"
+      class="w-full h-64 object-cover hover:scale-110 transition duration-700" 
+    />
+          </div>
+          <div class="p-7">
+            <h4 class="text-2xl font-bold mb-4">GWM Haval H6 Premium</h4>
+            <div class="grid grid-cols-2 gap-4 text-sm text-white/70 mb-7">
+              <div><span class="block text-white/40">Ano</span>2025</div>
+              <div><span class="block text-white/40">KM</span>35.995</div>
+              <div><span class="block text-white/40">Combustível</span>Híbrido Plug-in</div>
+              <div><span class="block text-white/40">Câmbio</span>Automático</div>
+            </div>
+            <a href="https://wa.me/5516997539327?text=Olá,%20tenho%20interesse%20no%20GWM%20Haval%20H6%20Premium" target="_blank" class="block text-center gold-gradient text-black py-4 rounded-2xl font-bold">Tenho Interesse</a>
+          </div>
+        </div>
+
+        <!-- CITROEN C3 -->
+        <div class="bg-[#111111] border border-white/5 rounded-3xl overflow-hidden card-hover fade-up relative">
+          <span class="absolute top-4 left-4 z-20 gold-gradient text-black text-xs font-black px-4 py-2 rounded-full shadow-lg">
+            PREÇO CAMPEÃO
+          </span>
+          <div class="overflow-hidden">
+           <img 
+  src="assets/img/citroen-c3-1.jpeg" 
+  alt="Citroën C3" 
+  class="w-full h-64 object-cover hover:scale-110 transition duration-700"
+/>
+          </div>
+          <div class="p-7">
+            <h4 class="text-2xl font-bold mb-4">Citroën C3 Exclusive</h4>
+            <div class="grid grid-cols-2 gap-4 text-sm text-white/70 mb-7">
+              <div><span class="block text-white/40">Ano</span>2015</div>
+              <div><span class="block text-white/40">KM</span>117.000</div>
+              <div><span class="block text-white/40">Combustível</span>Flex</div>
+              <div><span class="block text-white/40">Versão</span>Teto Zenith</div>
+            </div>
+            <a href="https://wa.me/5516997539327?text=Olá,%20tenho%20interesse%20no%20Citroën%20C3%20Exclusive%20Teto%20Zenith" target="_blank" class="block text-center gold-gradient text-black py-4 rounded-2xl font-bold">Tenho Interesse</a>
+          </div>
+        </div>
+
+        <!-- HRV -->
+        <div class="bg-[#111111] border border-white/5 rounded-3xl overflow-hidden card-hover fade-up">
+          <div class="overflow-hidden">
+            <img 
+      src="assets/img/hrv-1.jpeg" 
+      alt="Honda HR-V"
+      class="w-full h-64 object-cover hover:scale-110 transition duration-700" 
+    />
+          </div>
+          <div class="p-7">
+            <h4 class="text-2xl font-bold mb-4">Honda HR-V 1.5</h4>
+            <div class="grid grid-cols-2 gap-4 text-sm text-white/70 mb-7">
+              <div><span class="block text-white/40">Ano</span>2025</div>
+              <div><span class="block text-white/40">KM</span>52.330</div>
+              <div><span class="block text-white/40">Combustível</span>Flex</div>
+              <div><span class="block text-white/40">Motor</span>1.5 Aspirado</div>
+            </div>
+            <a href="https://wa.me/5516997539327?text=Olá,%20tenho%20interesse%20no%20Honda%20HR-V%201.5" target="_blank" class="block text-center gold-gradient text-black py-4 rounded-2xl font-bold">Tenho Interesse</a>
+          </div>
+        </div>
+
+        <!-- ONIX -->
+        <div class="bg-[#111111] border border-white/5 rounded-3xl overflow-hidden card-hover fade-up">
+          <div class="overflow-hidden">
+            <img 
+      src="assets/img/onix-1.jpeg" 
+      alt="Chevrolet Onix Premier"
+      class="w-full h-64 object-cover hover:scale-110 transition duration-700" 
+    />
+          </div>
+          <div class="p-7">
+            <h4 class="text-2xl font-bold mb-4">Chevrolet Onix Premier</h4>
+            <div class="grid grid-cols-2 gap-4 text-sm text-white/70 mb-7">
+              <div><span class="block text-white/40">Ano</span>2024</div>
+              <div><span class="block text-white/40">KM</span>55.261</div>
+              <div><span class="block text-white/40">Combustível</span>Flex</div>
+              <div><span class="block text-white/40">Motor</span>1.0 Turbo</div>
+            </div>
+            <a href="https://wa.me/5516997539327?text=Olá,%20tenho%20interesse%20no%20Chevrolet%20Onix%20Premier" target="_blank" class="block text-center gold-gradient text-black py-4 rounded-2xl font-bold">Tenho Interesse</a>
+          </div>
+        </div>
+
+        <!-- BMW -->
+        <div class="bg-[#111111] border border-white/5 rounded-3xl overflow-hidden card-hover fade-up">
+          <div class="overflow-hidden">
+            <img 
+      src="assets/img/bmw-x1-1.jpeg" 
+      alt="BMW X1"
+      class="w-full h-64 object-cover hover:scale-110 transition duration-700" 
+    />
+          </div>
+          <div class="p-7">
+            <h4 class="text-2xl font-bold mb-4">BMW X1 M Sport</h4>
+            <div class="grid grid-cols-2 gap-4 text-sm text-white/70 mb-7">
+              <div><span class="block text-white/40">Ano</span>2026</div>
+              <div><span class="block text-white/40">KM</span>11.316</div>
+              <div><span class="block text-white/40">Combustível</span>Flex</div>
+              <div><span class="block text-white/40">Versão</span>sDrive20i</div>
+            </div>
+            <a href="https://wa.me/5516997539327?text=Olá,%20tenho%20interesse%20na%20BMW%20X1%20M%20Sport" target="_blank" class="block text-center gold-gradient text-black py-4 rounded-2xl font-bold">Tenho Interesse</a>
+          </div>
+        </div>
+
+        <!-- VOLVO -->
+        <div class="bg-[#111111] border border-white/5 rounded-3xl overflow-hidden card-hover fade-up">
+          <div class="overflow-hidden">
+               <img 
+      src="assets/img/volvo-xc40-1.jpeg" 
+      alt="Volvo XC40"
+      class="w-full h-64 object-cover hover:scale-110 transition duration-700" 
+    />
+          </div>
+          <div class="p-7">
+            <h4 class="text-2xl font-bold mb-4">Volvo XC40 Recharge</h4>
+            <div class="grid grid-cols-2 gap-4 text-sm text-white/70 mb-7">
+              <div><span class="block text-white/40">Ano</span>2022</div>
+              <div><span class="block text-white/40">KM</span>83.075</div>
+              <div><span class="block text-white/40">Combustível</span>Híbrido</div>
+              <div><span class="block text-white/40">Versão</span>Inscription</div>
+            </div>
+            <a href="https://wa.me/5516997539327?text=Olá,%20tenho%20interesse%20no%20Volvo%20XC40%20Recharge" target="_blank" class="block text-center gold-gradient text-black py-4 rounded-2xl font-bold">Tenho Interesse</a>
+          </div>
+        </div>
+
+        <!-- PULSE -->
+        <div class="bg-[#111111] border border-white/5 rounded-3xl overflow-hidden card-hover fade-up">
+          <div class="overflow-hidden">
+            <img 
+      src="assets/img/pulse-1.jpeg" 
+      alt="Fiat Pulse"
+      class="w-full h-64 object-cover hover:scale-110 transition duration-700" 
+    />
+          </div>
+          <div class="p-7">
+            <h4 class="text-2xl font-bold mb-4">Fiat Pulse Impetus</h4>
+            <div class="grid grid-cols-2 gap-4 text-sm text-white/70 mb-7">
+              <div><span class="block text-white/40">Ano</span>2023</div>
+              <div><span class="block text-white/40">KM</span>38.815</div>
+              <div><span class="block text-white/40">Combustível</span>Flex</div>
+              <div><span class="block text-white/40">Motor</span>Turbo 200</div>
+            </div>
+            <a href="https://wa.me/5516997539327?text=Olá,%20tenho%20interesse%20no%20Fiat%20Pulse%20Impetus" target="_blank" class="block text-center gold-gradient text-black py-4 rounded-2xl font-bold">Tenho Interesse</a>
+          </div>
+        </div>
+
+        <!-- CITY -->
+        <div class="bg-[#111111] border border-white/5 rounded-3xl overflow-hidden card-hover fade-up">
+          <div class="overflow-hidden">
+            <img 
+      src="assets/img/honda-city-1.jpeg" 
+      alt="Honda City"
+      class="w-full h-64 object-cover hover:scale-110 transition duration-700" 
+    />
+          </div>
+          <div class="p-7">
+            <h4 class="text-2xl font-bold mb-4">Honda City LX</h4>
+            <div class="grid grid-cols-2 gap-4 text-sm text-white/70 mb-7">
+              <div><span class="block text-white/40">Ano</span>2025</div>
+              <div><span class="block text-white/40">KM</span>19.610</div>
+              <div><span class="block text-white/40">Combustível</span>Flex</div>
+              <div><span class="block text-white/40">Câmbio</span>Automático</div>
+            </div>
+            <a href="https://wa.me/5516997539327?text=Olá,%20tenho%20interesse%20no%20Honda%20City%20LX" target="_blank" class="block text-center gold-gradient text-black py-4 rounded-2xl font-bold">Tenho Interesse</a>
+          </div>
+        </div>
+
+        <!-- AMAROK -->
+        <div class="bg-[#111111] border border-white/5 rounded-3xl overflow-hidden card-hover fade-up">
+          <div class="overflow-hidden">
+               <img 
+      src="assets/img/amarok-1.jpeg" 
+      alt="Amarok V6 Extreme"
+      class="w-full h-64 object-cover hover:scale-110 transition duration-700" 
+    />
+          </div>
+          <div class="p-7">
+            <h4 class="text-2xl font-bold mb-4">Volkswagen Amarok V6</h4>
+            <div class="grid grid-cols-2 gap-4 text-sm text-white/70 mb-7">
+              <div><span class="block text-white/40">Ano</span>2025</div>
+              <div><span class="block text-white/40">KM</span>17.345</div>
+              <div><span class="block text-white/40">Combustível</span>Diesel</div>
+              <div><span class="block text-white/40">Versão</span>Extreme 4Motion</div>
+            </div>
+            <a href="https://wa.me/5516997539327?text=Olá,%20tenho%20interesse%20na%20Volkswagen%20Amarok%20V6" target="_blank" class="block text-center gold-gradient text-black py-4 rounded-2xl font-bold">Tenho Interesse</a>
+          </div>
+        </div>
+
+        <!-- NIVUS -->
+        <div class="bg-[#111111] border border-white/5 rounded-3xl overflow-hidden card-hover fade-up">
+          <div class="overflow-hidden">
+             <img 
+      src="assets/img/nivus-1.jpeg" 
+      alt="Volkswagen Nivus"
+      class="w-full h-64 object-cover hover:scale-110 transition duration-700" 
+    />
+          </div>
+          <div class="p-7">
+            <h4 class="text-2xl font-bold mb-4">Volkswagen Nivus Highline</h4>
+            <div class="grid grid-cols-2 gap-4 text-sm text-white/70 mb-7">
+              <div><span class="block text-white/40">Ano</span>2021</div>
+              <div><span class="block text-white/40">KM</span>75.000</div>
+              <div><span class="block text-white/40">Combustível</span>Flex</div>
+              <div><span class="block text-white/40">Motor</span>200 TSI</div>
+            </div>
+            <a href="https://wa.me/5516997539327?text=Olá,%20tenho%20interesse%20no%20Volkswagen%20Nivus%20Highline" target="_blank" class="block text-center gold-gradient text-black py-4 rounded-2xl font-bold">Tenho Interesse</a>
+          </div>
+        </div>
+
+        <!-- COROLLA -->
+        <div class="bg-[#111111] border border-white/5 rounded-3xl overflow-hidden card-hover fade-up">
+          <div class="overflow-hidden">
+           <img 
+      src="assets/img/corolla-xei-1.jpeg" 
+      alt="Toyota Corolla"
+      class="w-full h-64 object-cover hover:scale-110 transition duration-700" 
+    />
+          </div>
+          <div class="p-7">
+            <h4 class="text-2xl font-bold mb-4">Toyota Corolla XEI</h4>
+            <div class="grid grid-cols-2 gap-4 text-sm text-white/70 mb-7">
+              <div><span class="block text-white/40">Ano</span>2022</div>
+              <div><span class="block text-white/40">KM</span>66.285</div>
+              <div><span class="block text-white/40">Combustível</span>Flex</div>
+              <div><span class="block text-white/40">Motor</span>2.0 Automático</div>
+            </div>
+            <a href="https://wa.me/5516997539327?text=Olá,%20tenho%20interesse%20no%20Toyota%20Corolla%20XEI%202.0%20Automático" target="_blank" class="block text-center gold-gradient text-black py-4 rounded-2xl font-bold">Tenho Interesse</a>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+    </div>
+  </section>
+
+
+  <!-- SOBRE -->
+  <section id="sobre" class="py-24 bg-[#101010] overflow-hidden">
+    <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+
+      <div class="fade-up">
+        <span class="text-gold font-semibold tracking-widest uppercase text-sm">
+          Sobre a M9
+        </span>
+
+        <h3 class="text-4xl md:text-5xl font-black mt-5 leading-tight">
+          Mais do que vender carros. <span class="text-gold">Realizamos sonhos.</span>
+        </h3>
+
+        <p class="text-white/70 text-lg leading-relaxed mt-8">
+          A M9 Automóveis nasceu com o propósito de oferecer uma experiência diferenciada na compra de veículos. Trabalhamos com transparência, atendimento humanizado e veículos cuidadosamente selecionados para garantir segurança e confiança em cada negociação.
+        </p>
+
+        <p class="text-white/70 text-lg leading-relaxed mt-6">
+          Nosso compromisso vai além da venda. Buscamos construir relacionamentos sólidos, ajudando cada cliente a conquistar seu próximo carro com tranquilidade, credibilidade e excelência em atendimento.
+        </p>
+      </div>
+
+      <div class="fade-up">
+        <img
+          src="https://images.unsplash.com/photo-1502161254066-6c74afbf07aa?q=80&w=1400&auto=format&fit=crop"
+          alt="Concessionária premium"
+          class="rounded-3xl shadow-2xl border border-white/10"
+        />
+      </div>
+    </div>
+  </section>
+
+
+  <!-- DEPOIMENTOS -->
+  <section id="depoimentos" class="py-24 bg-black">
+    <div class="max-w-7xl mx-auto px-6">
+
+      <div class="text-center mb-16 fade-up">
+        <span class="text-gold font-semibold tracking-widest uppercase text-sm">
+          Clientes satisfeitos
+        </span>
+
+        <h3 class="text-4xl md:text-5xl font-black mt-4">
+          Quem compra, recomenda.
+        </h3>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+
+        <div class="glass rounded-3xl p-8 card-hover fade-up">
+          <div class="text-gold text-2xl mb-5">★★★★★</div>
+
+          <p class="text-white/70 leading-relaxed mb-8">
+            “Atendimento impecável do início ao fim. Comprei meu carro com total segurança e transparência.”
+          </p>
+
+          <div>
+            <h4 class="font-bold">Carlos Henrique</h4>
+            <span class="text-white/40 text-sm">Cliente M9</span>
+          </div>
+        </div>
+
+        <div class="glass rounded-3xl p-8 card-hover fade-up">
+          <div class="text-gold text-2xl mb-5">★★★★★</div>
+
+          <p class="text-white/70 leading-relaxed mb-8">
+            “Veículos extremamente conservados e um atendimento muito diferenciado. Recomendo demais.”
+          </p>
+
+          <div>
+            <h4 class="font-bold">Mariana Souza</h4>
+            <span class="text-white/40 text-sm">Cliente M9</span>
+          </div>
+        </div>
+
+        <div class="glass rounded-3xl p-8 card-hover fade-up">
+          <div class="text-gold text-2xl mb-5">★★★★★</div>
+
+          <p class="text-white/70 leading-relaxed mb-8">
+            “Financiamento rápido, suporte excelente e muita confiança durante toda negociação.”
+          </p>
+
+          <div>
+            <h4 class="font-bold">Fernando Lima</h4>
+            <span class="text-white/40 text-sm">Cliente M9</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- CONTATO -->
+  <section id="contato" class="py-24 bg-[#101010]">
+    <div class="max-w-7xl mx-auto px-6">
+
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+
+        <div class="fade-up">
+          <span class="text-gold font-semibold tracking-widest uppercase text-sm">
+            Contato
+          </span>
+
+          <h3 class="text-4xl md:text-5xl font-black mt-5 leading-tight">
+            Fale com a equipe da M9 Automóveis.
+          </h3>
+
+          <div class="space-y-6 mt-10 text-white/75 text-lg">
+
+            <div>
+              <span class="text-gold font-semibold">WhatsApp:</span>
+              <p>(16) 99753-9327</p>
+            </div>
+
+            <div>
+              <span class="text-gold font-semibold">Instagram:</span>
+              <p>
+                <a 
+                  href="https://www.instagram.com/mateushm9/" 
+                  target="_blank"
+                  class="text-gold hover:text-yellow-400 transition"
+                >
+                  @mateushm9
+                </a>
+              </p>
+            </div>
+
+            <div>
+              <span class="text-gold font-semibold">Endereço:</span>
+              <p>
+                <a 
+                  href="https://www.google.com/maps/search/?api=1&query=Av.+Henrique+Gregori,+818+-+Vila+Boa+Vista+1,+São+Carlos+-+SP,+13574-140"
+                  target="_blank"
+                  class="text-gray-300 hover:text-gold transition"
+                >
+                  Av. Henrique Gregori, 818 - Vila Boa Vista 1, São Carlos - SP
+                </a>
+              </p>
+            </div>
+
+            <div>
+              <span class="text-gold font-semibold">Horário:</span>
+              <p>Segunda à Sexta • 08h às 18h</p>
+            </div>
+          </div>
+
+          <a href="https://wa.me/5516997539327"
+             target="_blank"
+             class="inline-flex mt-10 gold-gradient text-black px-8 py-4 rounded-full font-bold hover:scale-105 transition duration-300">
+            Conversar no WhatsApp
+          </a>
+        </div>
+
+
+        <div class="fade-up">
+          <div class="rounded-3xl overflow-hidden border border-white/10 shadow-2xl h-[450px]">
+            <iframe
+              src="https://maps.google.com/maps?q=Av.%20Henrique%20Gregori,%20818%20-%20São%20Carlos%20SP&t=&z=15&ie=UTF8&iwloc=&output=embed"
+              width="100%"
+              height="100%"
+              style="border:0"
+              allowfullscreen=""
+              loading="lazy">
+            </iframe>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- FOOTER -->
+  <footer class="border-t border-white/5 bg-black py-10">
+    <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-6">
+
+      <div>
+        <h4 class="text-2xl font-black">
+          <span class="text-gold">M9</span> Automóveis
+        </h4>
+      </div>
+
+      <p class="text-white/40 text-sm text-center">
+        © 2026 M9 Automóveis • Todos os direitos reservados.
+      </p>
+
+      <div class="text-center md:text-right">
+        <div class="text-white/40 text-sm">
+          São Carlos - SP
+        </div>
+
+        <p class="text-gray-500 text-sm mt-4">
+          Desenvolvido por 
+          <a 
+            href="https://www.instagram.com/sougabriel.henrique/" 
+            target="_blank"
+            class="text-yellow-500 hover:text-yellow-400 transition"
+          >
+            Gabriel Henrique
+          </a>
+        </p>
+      </div>
+    </div>
+  </footer>
+
+
+  <!-- WHATSAPP FLOAT -->
+  <a href="https://wa.me/5516997539327"
+     target="_blank"
+     class="fixed bottom-6 right-6 z-50 gold-gradient w-16 h-16 rounded-full flex items-center justify-center text-black shadow-2xl hover:scale-110 transition duration-300">
+
+    <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24">
+      <path d="M20.52 3.48A11.77 11.77 0 0012.05 0C5.5 0 .18 5.33.18 11.89c0 2.1.55 4.15 1.6 5.96L0 24l6.34-1.66a11.8 11.8 0 005.7 1.45h.01c6.55 0 11.87-5.33 11.87-11.89 0-3.17-1.23-6.15-3.4-8.42zm-8.47 18.3h-.01a9.8 9.8 0 01-5-1.37l-.36-.22-3.76.99 1-3.66-.24-.38a9.82 9.82 0 01-1.5-5.24c0-5.45 4.43-9.88 9.89-9.88a9.83 9.83 0 016.99 2.9 9.8 9.8 0 012.9 6.98c0 5.45-4.43 9.88-9.9 9.88zm5.42-7.37c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.17-.17.2-.35.22-.65.07-.3-.15-1.25-.46-2.39-1.46-.88-.78-1.48-1.74-1.65-2.03-.17-.3-.02-.46.13-.61.14-.14.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.07-.15-.67-1.61-.92-2.2-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.8.37-.27.3-1.04 1.02-1.04 2.48 0 1.46 1.07 2.87 1.22 3.07.15.2 2.1 3.2 5.1 4.48.71.3 1.27.48 1.7.61.71.23 1.36.2 1.88.12.57-.08 1.76-.72 2-1.42.25-.7.25-1.3.17-1.42-.07-.12-.27-.2-.57-.35z"/>
+    </svg>
+  </a>
+
+
+  <script>
+    // MOBILE MENU
+    const menuBtn = document.getElementById('menuBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+
+    menuBtn.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+    });
+
+
+    // SCROLL ANIMATION
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if(entry.isIntersecting){
+          entry.target.classList.add('active');
+        }
+      });
+    }, {
+      threshold: 0.15
+    });
+
+    document.querySelectorAll('.fade-up').forEach((el) => {
+      observer.observe(el);
+    });
+
+    // SMOOTH SCROLL LINKS
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        const target = document.querySelector(this.getAttribute('href'));
+
+        if(target){
+          e.preventDefault();
+
+          target.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+          });
+
+          mobileMenu.classList.add('hidden');
+        }
+      });
+    });
+  </script>
+
+</body>
+</html>
